@@ -60,8 +60,13 @@ def haber_cek_urfanatik():
 
     url = "https://www.urfanatik.com/haberleri/viransehir"
 
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+
+    headers = {
+    'User-Agent': user_agent
+    }
     try:
-        response = requests.get(url)
+        response = requests.get(url,headers=headers)
         soup = BeautifulSoup(response.text, 'lxml')
     except:
         print("Sayfa okunamadi yada internet baglantisi kotu")
@@ -88,9 +93,13 @@ def haber_cek_urfanatik():
 def haber_cek_urfanatik_jandarma():
 
     url = "https://www.urfanatik.com/haberleri/jandarma"
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
 
+    headers = {
+    'User-Agent': user_agent
+    }
     try:
-        response = requests.get(url)
+        response = requests.get(url,headers=headers)
         soup = BeautifulSoup(response.text, 'lxml')
     except:
         print("Sayfa okunamadi yada internet baglantisi kotu")
