@@ -65,30 +65,30 @@ def haber_cek_urfanatik():
     headers = {
     'User-Agent': user_agent
     }
-    try:
-        response = requests.get(url,headers=headers)
-        soup = BeautifulSoup(response.text, 'lxml')
-    except:
-        print("Sayfa okunamadi yada internet baglantisi kotu")
-        pass
 
-    try:
-        tum_divler = soup.find_all('div', class_='row c-nb c-nb-ms gut-1 gut-0-ms')
-        for i in tum_divler:
-            
-            a_href_etiketi = i.find('a', href=True)
-            url2 = "https://www.urfanatik.com"+a_href_etiketi['href']
+    response = requests.get(url,headers=headers)
+    soup = BeautifulSoup(response.text, 'lxml')
 
-            i = str(i.text.strip()).split("\n")
-            
-            baslik = i[0]
-            ozet = i[3]
-            haber_ekle(baslik, url2)
-            
-   
-    except:
-        print("HTML parsta sıkıntı var")
-        pass
+    print("Sayfa okunamadi yada internet baglantisi kotu")
+
+
+
+    tum_divler = soup.find_all('div', class_='row c-nb c-nb-ms gut-1 gut-0-ms')
+    for i in tum_divler:
+        
+        a_href_etiketi = i.find('a', href=True)
+        url2 = "https://www.urfanatik.com"+a_href_etiketi['href']
+
+        i = str(i.text.strip()).split("\n")
+        
+        baslik = i[0]
+        ozet = i[3]
+        haber_ekle(baslik, url2)
+        
+
+
+    print("HTML parsta sıkıntı var")
+
 
 def haber_cek_urfanatik_jandarma():
 
