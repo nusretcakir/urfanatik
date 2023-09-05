@@ -65,30 +65,30 @@ def haber_cek_urfanatik():
     headers = {
     'User-Agent': user_agent
     }
+    try:
+        response = requests.get(url,headers=headers)
+        soup = BeautifulSoup(response.text, 'lxml')
+    except:
+        print("Sayfa okunamadi yada internet baglantisi kotu")
+        pass
 
-    response = requests.get(url,headers=headers)
-    soup = BeautifulSoup(response.text, 'lxml')
+    try:
+        tum_divler = soup.find_all('div', class_='row c-nb c-nb-ms gut-1 gut-0-ms')
+        for i in tum_divler:
+            
+            a_href_etiketi = i.find('a', href=True)
+            url2 = "https://www.urfanatik.com"+a_href_etiketi['href']
 
-    print("Sayfa okunamadi yada internet baglantisi kotu")
-
-
-
-    tum_divler = soup.find_all('div', class_='row c-nb c-nb-ms gut-1 gut-0-ms')
-    for i in tum_divler:
-        
-        a_href_etiketi = i.find('a', href=True)
-        url2 = "https://www.urfanatik.com"+a_href_etiketi['href']
-
-        i = str(i.text.strip()).split("\n")
-        
-        baslik = i[0]
-        ozet = i[3]
-        haber_ekle(baslik, url2)
-        
-
-
-    print("HTML parsta sıkıntı var")
-
+            i = str(i.text.strip()).split("\n")
+            
+            baslik = i[0]
+            ozet = i[3]
+            haber_ekle(baslik, url2)
+            
+   
+    except:
+        print("HTML parsta sıkıntı var")
+        pass
 
 def haber_cek_urfanatik_jandarma():
 
@@ -126,7 +126,11 @@ def haber_cek_urfanatik_jandarma():
 def haber_cek_ajansurfa():
 
     url = "https://www.ajansurfa.com/haberleri/viransehir"
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
 
+    headers = {
+    'User-Agent': user_agent
+    }
     try:
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'lxml')
@@ -155,7 +159,11 @@ def haber_cek_ajansurfa():
 def haber_cek_urfadasin():
 
     url = "https://www.urfadasin.com/haberleri/viransehir"
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
 
+    headers = {
+    'User-Agent': user_agent
+    }
     try:
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'lxml')
@@ -186,6 +194,6 @@ if __name__ == "__main__":
         haber_cek_urfanatik()
         #haber_cek_urfanatik_jandarma()
         #haber_cek_ajansurfa()
-        #haber_cek_urfadasin()
+        haber_cek_urfadasin()
 
         time.sleep(60)
