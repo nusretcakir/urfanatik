@@ -132,7 +132,7 @@ def haber_cek_ajansurfa():
     'User-Agent': user_agent
     }
     try:
-        response = requests.get(url)
+        response = requests.get(url,headers=headers)
         soup = BeautifulSoup(response.text, 'lxml')
     except:
         print("Sayfa okunamadi yada internet baglantisi kotu")
@@ -165,7 +165,7 @@ def haber_cek_urfadasin():
     'User-Agent': user_agent
     }
     try:
-        response = requests.get(url)
+        response = requests.get(url,headers=headers)
         soup = BeautifulSoup(response.text, 'lxml')
     except:
         print("Sayfa okunamadi yada internet baglantisi kotu")
