@@ -3,6 +3,31 @@ import requests
 import time
 import sqlite3
 
+def yeni_dosya_indir():
+    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/urfanatik2.py?token=GHSAT0AAAAAACH67I2WZEPLGALUWB6WLP4AZIYORBQ"
+    r = requests.get(url)
+    open('main.py', 'wb').write(r.content)
+
+    url = "https://raw.githubusercontent.com/nusretcakir/version_control/master/v.txt"
+    r = requests.get(url)
+    open('v.txt', 'wb').write(r.content)
+
+
+def version_test():
+
+    #programin yerel surumu
+    with open("v.txt","r") as f:
+        version = int(f.read())  
+    
+    #programin net surumu
+    url = "https://raw.githubusercontent.com/nusretcakir/version_control/master/v.txt"
+    new_version = int(str((BeautifulSoup(requests.get(url).content,"html.parser"))))
+    
+    if version != new_version:
+        print("program guncellendi...") 
+        yeni_dosya_indir()
+
+
 def gonder(text):
     api_url = f"https://api.telegram.org/bot6372109892:AAEhkH7mMGwbiLOXDKzgpazL2oc0iAnYs5k/sendMessage"
     data = {
@@ -192,8 +217,8 @@ if __name__ == "__main__":
     while True:
         
         haber_cek_urfanatik()
-        #haber_cek_urfanatik_jandarma()
-        #haber_cek_ajansurfa()
+        haber_cek_urfanatik_jandarma()
+        haber_cek_ajansurfa()
         haber_cek_urfadasin()
 
         time.sleep(60)
