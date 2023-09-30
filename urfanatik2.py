@@ -8,10 +8,9 @@ def yeni_dosya_indir():
     r = requests.get(url)
     open('main.py', 'wb').write(r.content)
 
-    url = "https://raw.githubusercontent.com/nusretcakir/version_control/master/v.txt"
+    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/v.txt?token=GHSAT0AAAAAACH67I2XAZXTYL35N5VAOCS6ZIYOUZQ"
     r = requests.get(url)
     open('v.txt', 'wb').write(r.content)
-
 
 def version_test():
 
@@ -20,13 +19,12 @@ def version_test():
         version = int(f.read())  
     
     #programin net surumu
-    url = "https://raw.githubusercontent.com/nusretcakir/version_control/master/v.txt"
+    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/v.txt?token=GHSAT0AAAAAACH67I2XAZXTYL35N5VAOCS6ZIYOUZQ"
     new_version = int(str((BeautifulSoup(requests.get(url).content,"html.parser"))))
     
     if version != new_version:
         print("program guncellendi...") 
         yeni_dosya_indir()
-
 
 def gonder(text):
     api_url = f"https://api.telegram.org/bot6372109892:AAEhkH7mMGwbiLOXDKzgpazL2oc0iAnYs5k/sendMessage"
