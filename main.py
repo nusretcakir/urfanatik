@@ -2,14 +2,13 @@ from bs4 import BeautifulSoup
 import requests
 import time
 import sqlite3
-import sys
 
 def yeni_dosya_indir():
-    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/urfanatik2.py"
+    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/urfanatik2.py?token=GHSAT0AAAAAACH67I2WZEPLGALUWB6WLP4AZIYORBQ"
     r = requests.get(url)
-    open('urfanatik2.py', 'wb').write(r.content)
+    open('main.py', 'wb').write(r.content)
 
-    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/v.txt"
+    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/v.txt?token=GHSAT0AAAAAACH67I2XAZXTYL35N5VAOCS6ZIYOUZQ"
     r = requests.get(url)
     open('v.txt', 'wb').write(r.content)
 
@@ -24,10 +23,8 @@ def version_test():
     new_version = int(str((BeautifulSoup(requests.get(url).content,"html.parser"))))
     
     if version != new_version:
+        print("program guncellendi...") 
         yeni_dosya_indir()
-        print("Program güncellendi")
-        gonder("Program güncellendi, yeniden başlatman gerekiyor.")
-        sys.exit()
 
 def gonder(text):
     api_url = f"https://api.telegram.org/bot6372109892:AAEhkH7mMGwbiLOXDKzgpazL2oc0iAnYs5k/sendMessage"
@@ -216,14 +213,10 @@ def haber_cek_urfadasin():
 if __name__ == "__main__":
     veritabani_olustur()
     while True:
-
-
-        print("test")
-        version_test()
-        #haber_cek_urfanatik()
-        #haber_cek_urfanatik_jandarma()
-        #haber_cek_ajansurfa()
-        #haber_cek_urfadasin()
         
+        haber_cek_urfanatik()
+        haber_cek_urfanatik_jandarma()
+        haber_cek_ajansurfa()
+        haber_cek_urfadasin()
 
-        time.sleep(5)
+        time.sleep(60)
