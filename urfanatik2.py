@@ -20,7 +20,7 @@ def version_test():
         version = int(f.read())  
     
     #programin net surumu
-    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/v.txt?token=GHSAT0AAAAAACH67I2XAZXTYL35N5VAOCS6ZIYOUZQ"
+    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/v.txt"
     new_version = int(str((BeautifulSoup(requests.get(url).content,"html.parser"))))
     
     if version != new_version:
