@@ -214,7 +214,7 @@ if __name__ == "__main__":
     veritabani_olustur()
     while True:
 
-        print("test")
+        print("test2")
         #haber_cek_urfanatik()
         #haber_cek_urfanatik_jandarma()
         #haber_cek_ajansurfa()
