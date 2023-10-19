@@ -213,10 +213,12 @@ def haber_cek_urfadasin():
 if __name__ == "__main__":
     veritabani_olustur()
     while True:
+
+        print("test")
+        #haber_cek_urfanatik()
+        #haber_cek_urfanatik_jandarma()
+        #haber_cek_ajansurfa()
+        #haber_cek_urfadasin()
         
-        haber_cek_urfanatik()
-        haber_cek_urfanatik_jandarma()
-        haber_cek_ajansurfa()
-        haber_cek_urfadasin()
 
         time.sleep(60)
