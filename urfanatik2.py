@@ -29,12 +29,13 @@ def version_test():
         os.execv(sys.executable, [sys.executable] + sys.argv)
         sys.exit()
 
-# 1411945130 h chat id
+# 1411945130 hc chat id
 # 1571716280 me chatid
+# 6343655697 fa chat id
 
 def gonder(text):
 
-    chat_ids = ["1571716280","6343655697",]
+    chat_ids = ["1571716280",]
     
     api_url = f"https://api.telegram.org/bot6372109892:AAEhkH7mMGwbiLOXDKzgpazL2oc0iAnYs5k/sendMessage"
 
@@ -224,10 +225,10 @@ if __name__ == "__main__":
     veritabani_olustur()
     while True:
 
-
-        haber_cek_urfanatik()
-        haber_cek_urfanatik_jandarma()
-        haber_cek_ajansurfa()
-        haber_cek_urfadasin()
+        gonder("deneme")
+        # haber_cek_urfanatik()
+        # haber_cek_urfanatik_jandarma()
+        # haber_cek_ajansurfa()
+        # haber_cek_urfadasin()
 
         time.sleep(60)
