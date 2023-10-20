@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import time
 import sqlite3
-import sys
+import sys,os
 
 def yeni_dosya_indir():
     url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/urfanatik2.py"
@@ -20,13 +20,13 @@ def version_test():
         version = int(f.read())  
     
     #programin net surumu
-    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/v.txt?token=GHSAT0AAAAAACH67I2XAZXTYL35N5VAOCS6ZIYOUZQ"
+    url = "https://raw.githubusercontent.com/nusretcakir/urfanatik/main/v.txt"
     new_version = int(str((BeautifulSoup(requests.get(url).content,"html.parser"))))
     
     if version != new_version:
         yeni_dosya_indir()
-        print("Program güncellendi")
-        gonder("Program güncellendi, yeniden başlatman gerekiyor.")
+        print("Program güncellendi,yeniden başlatılıyor...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
         sys.exit()
 
 def gonder(text):
@@ -216,13 +216,11 @@ def haber_cek_urfadasin():
 if __name__ == "__main__":
     veritabani_olustur()
     while True:
-        
-        print("test")
 
         version_test()
-        # haber_cek_urfanatik()
-        # haber_cek_urfanatik_jandarma()
-        # haber_cek_ajansurfa()
-        # haber_cek_urfadasin()
+        haber_cek_urfanatik()
+        haber_cek_urfanatik_jandarma()
+        haber_cek_ajansurfa()
+        haber_cek_urfadasin()
 
         time.sleep(60)
