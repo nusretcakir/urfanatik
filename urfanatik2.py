@@ -34,7 +34,7 @@ def version_test():
 
 def gonder(text):
 
-    chat_ids = ["1571716280",]
+    chat_ids = ["1571716280","6343655697",]
     
     api_url = f"https://api.telegram.org/bot6372109892:AAEhkH7mMGwbiLOXDKzgpazL2oc0iAnYs5k/sendMessage"
 
@@ -224,11 +224,10 @@ if __name__ == "__main__":
     veritabani_olustur()
     while True:
 
-        gonder("Seni seviyorum")
-        print("mesaj gönderildi")
-        # haber_cek_urfanatik()
-        # haber_cek_urfanatik_jandarma()
-        # haber_cek_ajansurfa()
-        # haber_cek_urfadasin()
+
+        haber_cek_urfanatik()
+        haber_cek_urfanatik_jandarma()
+        haber_cek_ajansurfa()
+        haber_cek_urfadasin()
 
         time.sleep(60)
