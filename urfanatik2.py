@@ -29,14 +29,21 @@ def version_test():
         os.execv(sys.executable, [sys.executable] + sys.argv)
         sys.exit()
 
-def gonder(text):
-    api_url = f"https://api.telegram.org/bot6372109892:AAEhkH7mMGwbiLOXDKzgpazL2oc0iAnYs5k/sendMessage"
-    data = {
-        'chat_id': "1571716280",
-        'text': text,
-    }
+# 1411945130 h chat id
+# 1571716280 me chatid
 
-    response = requests.post(api_url, data=data)
+def gonder(text):
+
+    chat_ids = ["1571716280",]
+    
+    api_url = f"https://api.telegram.org/bot6372109892:AAEhkH7mMGwbiLOXDKzgpazL2oc0iAnYs5k/sendMessage"
+
+    for chat_id in chat_ids:
+        data = {
+            'chat_id': chat_id,
+            'text': text,
+        }
+        response = requests.post(api_url, data=data)
 
 def veritabani_olustur():
     conn = sqlite3.connect("haberler.db")
@@ -217,10 +224,11 @@ if __name__ == "__main__":
     veritabani_olustur()
     while True:
 
-        version_test()
-        haber_cek_urfanatik()
-        haber_cek_urfanatik_jandarma()
-        haber_cek_ajansurfa()
-        haber_cek_urfadasin()
+        gonder("Seni seviyorum")
+        print("mesaj gönderildi")
+        # haber_cek_urfanatik()
+        # haber_cek_urfanatik_jandarma()
+        # haber_cek_ajansurfa()
+        # haber_cek_urfadasin()
 
         time.sleep(60)
