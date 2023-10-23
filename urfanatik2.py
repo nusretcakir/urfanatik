@@ -224,7 +224,8 @@ def haber_cek_urfadasin():
 if __name__ == "__main__":
     veritabani_olustur()
     while True:
-
+        
+        version_test()
         haber_cek_urfanatik()
         haber_cek_urfanatik_jandarma()
         haber_cek_ajansurfa()
