@@ -35,7 +35,7 @@ def version_test():
 
 def gonder(text):
 
-    chat_ids = ["1571716280",]
+    chat_ids = ["1571716280","1219734793",]
     
     api_url = f"https://api.telegram.org/bot6372109892:AAEhkH7mMGwbiLOXDKzgpazL2oc0iAnYs5k/sendMessage"
 
