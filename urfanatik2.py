@@ -222,13 +222,17 @@ def haber_cek_urfadasin():
         pass
 
 if __name__ == "__main__":
-    veritabani_olustur()
+    try: 
+        veritabani_olustur()
+    except:
+        print("veritabanı oluşturmada hata")
     while True:
-        
-        version_test()
-        haber_cek_urfanatik()
-        haber_cek_urfanatik_jandarma()
-        haber_cek_ajansurfa()
-        haber_cek_urfadasin()
-
+        try:
+            version_test()
+            haber_cek_urfanatik()
+            haber_cek_urfanatik_jandarma()
+            haber_cek_ajansurfa()
+            haber_cek_urfadasin()
+        except:
+            print("bir yerlerde hata var onu bul neo..")
         time.sleep(60)
